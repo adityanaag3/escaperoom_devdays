@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <assignments>
+        <name>Force_Logout</name>
+        <label>Force Logout</label>
+        <locationX>314</locationX>
+        <locationY>350</locationY>
+        <assignmentItems>
+            <assignToReference>LoginFlow_ForceLogout</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Failure</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_if_values_are_correct</name>
+        <label>Check if values are correct</label>
+        <locationX>182</locationX>
+        <locationY>242</locationY>
+        <defaultConnector>
+            <targetReference>Force_Logout</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>All_Good</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>In_what_city_or_town_was_your_first_job</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Mumbai</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>What_is_your_favorite_food</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pizza</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>What_was_the_make_and_model_of_your_first_car</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Volkswagen Vento</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Success</targetReference>
+            </connector>
+            <label>All Good</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>Login Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Login Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Failure</name>
+        <label>Failure</label>
+        <locationX>314</locationX>
+        <locationY>458</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Unable_to_verify</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;We&apos;re sorry. We are unable to verify that it is really you!&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Security_Questions</name>
+        <label>Security Questions</label>
+        <locationX>182</locationX>
+        <locationY>134</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Check_if_values_are_correct</targetReference>
+        </connector>
+        <fields>
+            <name>What_was_the_make_and_model_of_your_first_car</name>
+            <dataType>String</dataType>
+            <fieldText>What was the make and model of your first car?</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>In_what_city_or_town_was_your_first_job</name>
+            <dataType>String</dataType>
+            <fieldText>In what city or town was your first job?</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>What_is_your_favorite_food</name>
+            <dataType>String</dataType>
+            <fieldText>What is your favorite food?</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Success</name>
+        <label>Success</label>
+        <locationX>50</locationX>
+        <locationY>350</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>ValidateSuccessful</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;So, its really you. The secret phrase for today is &lt;strong&gt;&apos;workflow snippet&apos;&lt;/strong&gt; &lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Security_Questions</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>LoginFlow_ForceLogout</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

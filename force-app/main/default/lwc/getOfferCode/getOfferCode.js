@@ -13,6 +13,7 @@ export default class GetOfferCode extends LightningElement {
                 }
             })
             .catch(error => {
+                console.error('An error occurred when trying to fetch the offer code from a third-party system. Looks like some configuration to make the callout is missing. It is often due to incorrect commits to source control repo {!$Label.GitHub_Repo}')
                 this.showError('Unable to fetch offer code');
             });
     }

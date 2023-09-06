@@ -14,7 +14,7 @@
             "Material__c": "Aluminum",
             "Picture_URL__c": "https://s3-us-west-2.amazonaws.com/dev-or-devrl-s3-bucket/sample-apps/ebikes/fusex1.jpg",
             "Battery__c": "401Wh",
-            "Charger__c": "41V4A",
+            "Charger__c": "42T65",
             "Motor__c": "251 watt, 75Nm",
             "Fork__c": "Air spring",
             "Front_Brakes__c": "Dual-pivot caliper brake",

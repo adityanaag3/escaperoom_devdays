@@ -139,7 +139,7 @@
         <allowPause>false</allowPause>
         <fields>
             <name>ValidateSuccessful</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;So, its really you. The secret phrase for today is &lt;strong&gt;&apos;workflow snippet&apos;&lt;/strong&gt; &lt;/p&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;So, its really you. The secret phrase for today is &lt;strong&gt;&apos;code coverage&apos;&lt;/strong&gt; &lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>

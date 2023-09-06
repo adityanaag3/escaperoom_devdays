@@ -3,6 +3,12 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>getOfferCode</componentName>
+                <identifier>c_getOfferCode</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentName>barcodeScanner</componentName>
                 <identifier>c_barcodeScanner</identifier>
                 <visibilityRule>
